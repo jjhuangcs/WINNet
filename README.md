@@ -2,7 +2,17 @@
 by Jun-Jie Huang and Pier Luigi Dragotti
 
 ### Dependencies
-* Python3
+* Python
+* torchvision
 * PyTorch>=1.0
-* OpenCV-Python, TensorboardX, Visdom
-* NVIDIA GPU+CUDA
+* OpenCV for Python
+* HDF5 for Python
+* tensorboardX (Tensorboard for Python)
+
+### Usage
+
+#### Training
+
+#### Testing
+
+
