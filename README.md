@@ -12,6 +12,7 @@ by Jun-Jie Huang and Pier Luigi Dragotti
 ### Usage
 
 #### Training
+```python WINNet_train_iter.py --mode S --noiseL 15 --val_noiseL 15 --lr 0.001 --outf logs/WINNet_noiseL_15 --lvl 1 --start_epoch 0 --preprocess True```
 
 #### Testing
 
