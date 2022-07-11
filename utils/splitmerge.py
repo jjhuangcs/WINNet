@@ -3,8 +3,18 @@ from torch import nn
 from torch.nn import functional as F
 import pywt
 import math
-from iUNet.layers import InvertibleDownsampling2D
-from iUNet.dct import dct_matrix
+from utils.iUNet.layers import InvertibleDownsampling2D
+
+def dct_matrix(n):
+    """DCT-II"""
+    ret = torch.Tensor(n, n)
+
+    for k in range(n):
+        for i in range(n):
+            f = math.sqrt(1. / (2. * n)) if k > 0 else math.sqrt(1. / (4. * n))
+            ret[k, i] = f * math.cos(math.pi * k * (2. * i + 1.) / (2. * n))
+
+    return 2. * ret
 
 class LearnSplit(nn.Module):
     def __init__(self, in_channels, channel_multiplier, dilate, c_channels, stride=1):
