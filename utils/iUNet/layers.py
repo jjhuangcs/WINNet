@@ -108,10 +108,6 @@ class OrthogonalResamplingLayer(torch.nn.Module):
         self._kernel_transposed_shape = ((self.low_channel_number, self.high_channel_number)
                               + (kernel_size, kernel_size))
 
-        # print(self.low_channel_number, self.channel_multiplier, self.high_channel_number, self._kernel_matrix_shape, self._kernel_shape, self._kernel_transposed_shape)
-
-        # print(self.low_channel_number, self.high_channel_number, self._kernel_matrix_shape, self._kernel_shape)
-
         self.weight = torch.nn.Parameter(
             __initialize_weight__(kernel_matrix_shape=self._kernel_matrix_shape,
                                   stride=(kernel_size, kernel_size),
@@ -259,64 +255,31 @@ class InvertibleDownsampling2D(OrthogonalResamplingLayer):
             **kwargs
         )
 
-        # self.dilate = dilate
-
-        # self.filter_size = int((channel_multiplier*in_channels)**0.5)
-
-        # print(in_channels)
-
     def forward(self, x):
-        # Convolve with stride 2 in order to invertibly downsample.
-        # print(x.size())
-        # print(self.kernel.size())
-        # print(self.filter_size)
-        #
-        # print(self.kernel.size())
-
         psize = int(self.kernel.size(3) / 2) * self.dilate
         paddsz = math.floor(self.kernel.size(3) / 2) * self.dilate
         if self.kernel.size(3) % 2 == 0:
             x = F.pad(x, (psize - self.dilate, psize, psize - self.dilate, psize), mode='replicate')
         else:
             x = F.pad(x, (paddsz, paddsz, paddsz, paddsz), mode='replicate')
-        #
-        # # print(x.size())
-        #
-        # out = F.conv2d(x, self.kernel, stride=self.stride)#, padding=math.floor(self.filter_size / 2)#, groups=self.low_channel_number
-        # 2021-04-20 We can also add dilate setting to the splitting operator
+        
         out = F.conv2d(x, self.kernel, stride=self.stride, dilation=self.dilate)
-        # print(x.size())
-        #
-        # out = F.conv2d(
-        #     x, self.kernel, stride=self.stride, groups=self.low_channel_number, padding=math.floor(self.filter_size / 2))
-        # print(x.size())
-        # print(out.size())
+        
         return out
 
     def inverse(self, x):
         psize = int(self.kernel.size(3) / 2) * self.dilate
         paddsz = math.floor(self.kernel.size(3) / 2) * self.dilate
-        # print(x.size())
-
-        # out = F.conv_transpose2d(x, self.kernel, stride=self.stride, groups=self.low_channel_numbers)
-        # print(self.stride)
+        
         if self.stride[0] > 1:
-            # Apply transposed convolution in order to invert the downsampling.
             out = F.conv_transpose2d(x, self.kernel, stride=self.stride, groups=self.low_channel_numbers)
-            # print(1)
-        # out = F.conv_transpose2d(
-        #     x, self.kernel, stride=self.stride, groups=self.low_channel_number)
         else:
             if self.kernel.size(3) % 2 == 0:
                 x = F.pad(x, (psize, psize - self.dilate, psize, psize - self.dilate), mode='replicate')
             else:
                 x = F.pad(x, (paddsz, paddsz, paddsz, paddsz), mode='replicate')
-            # out = F.conv2d(x, self.kernel_transposed, stride=self.stride)
             out = F.conv2d(x, self.kernel_transposed, stride=self.stride, dilation=self.dilate)
-            #, padding=math.floor(self.filter_size / 2)#, groups=self.low_channel_number
-            # print(2)
-        # print(x.size())
-        # print(out.size())
+            
         return out
 
     def get_transposed_kernel(self):
@@ -393,28 +356,7 @@ class InvertibleDownsampling3D(OrthogonalResamplingLayer):
         # Apply transposed convolution in order to invert the downsampling.
         return F.conv_transpose3d(
             x, self.kernel, stride=self.stride, groups=self.low_channel_number)
-
-    # def forward(self, x):
-    #     psize = int(self.kernel.size(3) / 2)
-    #     paddsz = math.floor(self.filter_size / 2)
-    #     if self.kernel.size(3) % 2 == 0:
-    #         x = F.pad(x, (psize - 1, psize, psize - 1, psize), mode='replicate')
-    #     else:
-    #         x = F.pad(x, (paddsz, paddsz, paddsz, paddsz), mode='replicate')
-    #
-    #     out = F.conv2d(
-    #         x, self.kernel, stride=self.stride, groups=self.low_channel_number)#, padding=math.floor(self.filter_size / 2)
-    #
-    #     return out
-    #
-    # def inverse(self, x):
-    #     psize = int(self.kernel.size(3) / 2)
-    #     paddsz = math.floor(self.filter_size / 2)
-    #     if self.kernel.size(3) % 2 == 0:
-    #         x = F.pad(x, (psize, psize - 1, psize, psize - 1), mode='replicate')
-    #     else:
-    #         x = F.pad(x, (paddsz, paddsz, paddsz, paddsz), mode='replicate')
-
+    
         out = F.conv2d(
             x, self.kernel_transposed, stride=self.stride, groups=self.low_channel_number)#, padding=math.floor(self.filter_size / 2)
 
