@@ -12,7 +12,7 @@ by Jun-Jie Huang and Pier Luigi Dragotti
 ### 2. Usage
 
 #### 2.1. Training with a known noise level
-```python WINNet_denoise_train.py \
+python WINNet_denoise_train.py \
 --mode S \
 --lr 0.001 \
 --outf logs/WINNet_lvl_1_nlvl_25 \
@@ -20,10 +20,10 @@ by Jun-Jie Huang and Pier Luigi Dragotti
 --noiseL 25```
 
 #### Testing
-```python WINNet_denoise_test.py \
+python WINNet_denoise_test.py \
 --logdir logs/WINNet_lvl_1_nlvl_25 \
 --lvl 1 \
 --test_noiseL 25 \
 --start_epoch 50 --end_epoch 50  \
---test_data Set12```
+--test_data Set12
 
