@@ -1,5 +1,5 @@
 # [WINNet: Wavelet-inspired Invertible Network for Image Denoising](https://ieeexplore.ieee.org/document/9807636)
-by [Jun-Jie Huang](https://jjhuangcs.github.io/) and [Pier Luigi Dragotti](http://www.commsp.ee.ic.ac.uk/~pld/)
+by [Jun-Jie Huang](https://jjhuangcs.github.io/) (jjhuang@nudt.edu.cn) and [Pier Luigi Dragotti](http://www.commsp.ee.ic.ac.uk/~pld/)
 
 Pytorch implementation for "WINNet: Wavelet-inspired Invertible Network for Image Denoising" (TIP'2022).
 
