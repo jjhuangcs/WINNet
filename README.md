@@ -46,7 +46,11 @@ Note: For training NENet, the training noise level $\sigma_N$ is uniformly drawn
 ### Testing for deblurring
 ```python WINNet_deblur_test.py --logdirdn logs/WINNet_lvl_1_nlvl_0_55 --logdirne logs/NENet --lvl 1 --epochdn 50 --epochne 1 --test_data Set12 --test_noiseL 2.55```
 
-# BibTex
+# Citation
+
+If you use any part of this code in your research, please cite our paper:
+
+
 ```
 @article{huang22WINNet,
   author={Huang, Jun-Jie and Dragotti, Pier Luigi},
