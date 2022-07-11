@@ -15,14 +15,23 @@ by Jun-Jie Huang and Pier Luigi Dragotti
 
 ## 2.1. Training
 
+The 400 training images from the Berkeley segmentation dataset (BSD) of size 180 × 180 are used for training. The training patch size for
+non-blind and blind denoising setting is 40×40 and 50×50, respectively.
+
 ### Training WINNet with known noise level
 ```python WINNet_denoise_train.py --mode S --lr 0.001 --outf logs/WINNet_lvl_1_nlvl_25 --lvl 1 --noiseL 25```
+
+Note: For training with a single noise level, three noise levels are considered, i.e., $\sigma_N$ = 15, 25 and 50.
 
 ### Training WINNet with blind noise level [0, 55]
 ```python WINNet_denoise_train.py --mode B --lr 0.001 --outf logs/WINNet_lvl_1_nlvl_0_55 --lvl 1```
 
+Note: For blind image denoising scenario, the training noise level $\sigma_N$ is uniformly drawn from [0, 55].
+
 ### Training Noise Estimation Network (NENet)
 ```python NENet_train.py --lr 0.001 --outf logs/NENet```
+
+Note: For training NENet, the training noise level $\sigma_N$ is uniformly drawn from [0, 55].
 
 ## 2.2. Testing
 
