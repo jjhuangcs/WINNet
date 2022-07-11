@@ -57,4 +57,15 @@ Note: For training NENet, the training noise level $\sigma_N$ is uniformly drawn
   doi={10.1109/TIP.2022.3184845}
 }
 ```
+```
+@inproceedings{huang2021linn,
+  author={Huang, Jun-Jie and Dragotti, Pier Luigi},
+  title={{LINN}: Lifting Inspired Invertible Neural Networks for Image Denoising},
+  booktitle={2021 29th European Signal Processing Conference (EUSIPCO)}, 
+  year={2021},
+  pages={636-640},
+  organization={EURASIP},
+  doi={10.23919/EUSIPCO54536.2021.9615931}
+}
+```
 
