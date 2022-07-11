@@ -1,5 +1,5 @@
 # [WINNet: Wavelet-inspired Invertible Network for Image Denoising](https://ieeexplore.ieee.org/document/9807636)
-by Jun-Jie Huang and Pier Luigi Dragotti
+by [Jun-Jie Huang](https://jjhuangcs.github.io/) and [Pier Luigi Dragotti](http://www.commsp.ee.ic.ac.uk/~pld/)
 
 <img width="654" alt="WINNet" src="https://user-images.githubusercontent.com/89965355/178172283-b6b9e7da-add2-44ad-b83d-3b87918a8c5b.png">
 
@@ -46,10 +46,10 @@ Note: For training NENet, the training noise level $\sigma_N$ is uniformly drawn
 
 # BibTex
 ```
-@ARTICLE{huang22WINNet,
+@article{huang22WINNet,
   author={Huang, Jun-Jie and Dragotti, Pier Luigi},
   journal={IEEE Transactions on Image Processing},
-  title={WINNet: Wavelet-Inspired Invertible Network for Image Denoising},
+  title={{WINNet}: Wavelet-Inspired Invertible Network for Image Denoising},
   year={2022},
   volume={31},
   number={},
