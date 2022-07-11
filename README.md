@@ -54,7 +54,7 @@ If you use any part of this code in your research, please cite our paper:
 
 
 ```
-@article{huang22WINNet,
+@article{huang2022WINNet,
   author={Huang, Jun-Jie and Dragotti, Pier Luigi},
   journal={IEEE Transactions on Image Processing},
   title={{WINNet}: Wavelet-Inspired Invertible Network for Image Denoising},
