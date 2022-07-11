@@ -5,6 +5,8 @@ Pytorch implementation for "WINNet: Wavelet-inspired Invertible Network for Imag
 
 <img width="654" alt="WINNet" src="https://user-images.githubusercontent.com/89965355/178172283-b6b9e7da-add2-44ad-b83d-3b87918a8c5b.png">
 
+Overview of the proposed wavelet-inspired invertible network (WINNet). It consists of K levels of lifting inspired invertible neural networks (LINN) and denoising network. The forward transform of LINN non-linearly converts the input noisy image into coarse part (green) and detail parts (black). Denoising network will perform denoising operation on the detail part while the coarse version is decomposed again using a second level and the decomposition and denoising steps are repeated K times. The backward transform of the LINN will reconstruct the denoised image using the denoised detail parts and the original coarse part. The estimated noise level from the noise estimation network will be used to adjust the soft-thresholds of the soft-thresholding non-linearity to make the WINNet to adapt well to the current noise level.
+
 # 1. Dependencies
 * Python
 * torchvision
