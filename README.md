@@ -12,8 +12,8 @@ by Jun-Jie Huang and Pier Luigi Dragotti
 ### Usage
 
 #### Training
-```python WINNet_train_iter.py --mode S --noiseL 15 --val_noiseL 15 --lr 0.001 --outf logs/WINNet_noiseL_15 --lvl 1 --start_epoch 0 --preprocess True```
+```python WINNet_denoise_train.py --mode S --lr 0.001 --outf logs/WINNet_lvl_1_nlvl_25 --lvl 1 --noiseL 25```
 
 #### Testing
-
+```python WINNet_denoise_test.py --logdir logs/WINNet_lvl_1_nlvl_25 --lvl 1 --test_noiseL 25 --start_epoch 50 --end_epoch 50  --test_data Set12```
 
