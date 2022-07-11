@@ -74,7 +74,7 @@ def main():
     files_source = glob.glob(os.path.join('data', opt.test_data, '*.png'))
     files_source.sort()
 
-    kernels = hdf5storage.loadmat(os.path.join('kernels', 'Levin09.mat'))['kernels'] # kernels_12.mat  Levin09
+    kernels = hdf5storage.loadmat(os.path.join('data/kernels', 'Levin09.mat'))['kernels'] # kernels_12.mat  Levin09
 
     for k_index in range(kernels.shape[1]):
         torch.manual_seed(12345)
