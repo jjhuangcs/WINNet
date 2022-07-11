@@ -35,3 +35,17 @@ by Jun-Jie Huang and Pier Luigi Dragotti
 ### Testing for deblurring
 ```python WINNet_deblur_test.py --logdirdn logs/WINNet_lvl_1_nlvl_0_55 --logdirne logs/NENet --lvl 1 --epochdn 50 --epochne 1 --test_data Set12 --test_noiseL 2.55```
 
+# BibTex
+```
+@ARTICLE{huang22WINNet,
+  author={Huang, Jun-Jie and Dragotti, Pier Luigi},
+  journal={IEEE Transactions on Image Processing},
+  title={WINNet: Wavelet-Inspired Invertible Network for Image Denoising},
+  year={2022},
+  volume={31},
+  number={},
+  pages={4377-4392},
+  doi={10.1109/TIP.2022.3184845}
+}
+```
+
