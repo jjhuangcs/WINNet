@@ -1,4 +1,4 @@
-## [WINNet: Wavelet-inspired Invertible Network for Image Denoising](https://arxiv.org/pdf/2109.06381.pdf)
+# [WINNet: Wavelet-inspired Invertible Network for Image Denoising](https://arxiv.org/pdf/2109.06381.pdf)
 by Jun-Jie Huang and Pier Luigi Dragotti
 
 ### 1. Dependencies
