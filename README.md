@@ -40,13 +40,13 @@ Note: For training NENet, the training noise level $\sigma_N$ is uniformly drawn
 ## 2.2. Testing
 
 ### Testing for denoising with known noise level
-```python WINNet_denoise_test.py --logdir logs/WINNet_lvl_1_nlvl_25 --lvl 1 --test_noiseL 25 --start_epoch 50 --end_epoch 50 --test_data Set12```
+```python WINNet_denoise_test.py --logdir pretrain/WINNet_lvl_1_nlvl_25 --lvl 1 --test_noiseL 25 --test_data Set12```
 
 ### Testing for blind denoising
-```python WINNet_wNE_blind_denoise_test.py --logdirdn logs/WINNet_lvl_1_nlvl_0_55 --logdirne logs/NENet --lvl 1 --epochdn 50 --epochne 1 --test_data Set12 --test_noiseL 85```
+```python WINNet_wNE_blind_denoise_test.py --logdirdn pretrain/WINNet_lvl_1_nlvl_0_55 --logdirne pretrain/NENet --lvl 1 --test_data Set12 --test_noiseL 85```
 
 ### Testing for deblurring
-```python WINNet_deblur_test.py --logdirdn logs/WINNet_lvl_1_nlvl_0_55 --logdirne logs/NENet --lvl 1 --epochdn 50 --epochne 1 --test_data Set12 --test_noiseL 2.55```
+```python WINNet_deblur_test.py --logdirdn pretrain/WINNet_lvl_1_nlvl_0_55 --logdirne pretrain/NENet --lvl 1 --test_data Set12 --test_noiseL 2.55```
 
 # Citation
 
