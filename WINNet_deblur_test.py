@@ -42,8 +42,6 @@ parser.add_argument("--logdirne", type=str, default="logs", help='path of log fi
 parser.add_argument("--test_data", type=str, default='Set12', help='test on Set12 or Set68')
 parser.add_argument("--test_noiseL", type=float, default=25, help='noise level used on test set')
 parser.add_argument("--show_results", type=bool, default=False, help="show results")
-parser.add_argument("--epochdn", type=int, default=1, help="testing epoch")
-parser.add_argument("--epochne", type=int, default=1, help="testing epoch")
 
 opt = parser.parse_args()
 
@@ -60,12 +58,12 @@ def main():
     # Build model
     net = WINNetklvl(steps=opt.num_of_steps, layers=opt.num_of_layers, channels=opt.num_of_channels, klvl=opt.lvl)
     model = nn.DataParallel(net, device_ids=device_ids).cuda()
-    model.load_state_dict(torch.load(os.path.join(opt.logdirdn, 'net_WINNet_epoch_{}.pth'.format(opt.epochdn))))
+    model.load_state_dict(torch.load(os.path.join(opt.logdirdn, 'net_WINNet.pth')))
     model.eval()
 
     net_NE = noiseEst(psz=8, stride=1, num_layers=5, f_ch=16, fsz=5)
     model_NE = nn.DataParallel(net_NE, device_ids=device_ids).cuda()
-    model_NE.load_state_dict(torch.load(os.path.join(opt.logdirne, 'net_NENet_epoch_{}.pth'.format(opt.epochne))))
+    model_NE.load_state_dict(torch.load(os.path.join(opt.logdirne, 'net_NENet.pth')))
     model_NE.eval()
 
     pytorch_total_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
