@@ -24,8 +24,6 @@ parser.add_argument("--logdirne", type=str, default="logs", help='path of log fi
 parser.add_argument("--test_data", type=str, default='Set12', help='test on Set12 or Set68')
 parser.add_argument("--test_noiseL", type=float, default=25, help='noise level used on test set')
 parser.add_argument("--show_results", type=bool, default=False, help="show results")
-parser.add_argument("--epochdn", type=int, default=1, help="testing epoch")
-parser.add_argument("--epochne", type=int, default=1, help="testing epoch")
 
 opt = parser.parse_args()
 
@@ -48,8 +46,8 @@ def main():
 
     torch.manual_seed(123)
 
-    dnmodel.load_state_dict(torch.load(os.path.join(opt.logdirdn, 'net_WINNet_epoch_{}.pth'.format(opt.epochdn))))
-    nemodel.load_state_dict(torch.load(os.path.join(opt.logdirne, 'net_NENet_epoch_{}.pth'.format(opt.epochne))))
+    dnmodel.load_state_dict(torch.load(os.path.join(opt.logdirdn, 'net_WINNet.pth')))
+    nemodel.load_state_dict(torch.load(os.path.join(opt.logdirne, 'net_NENet.pth')))
 
     pytorch_total_params = sum(p.numel() for p in dnmodel.parameters() if p.requires_grad)
     print('Total Number of Parameters: ', pytorch_total_params)
